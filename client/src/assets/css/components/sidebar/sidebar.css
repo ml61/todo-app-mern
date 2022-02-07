@@ -1,0 +1,8 @@
+.sidebar {
+  width: 280px;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

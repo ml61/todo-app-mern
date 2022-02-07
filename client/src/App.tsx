@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from "react";
-import "./style/index.css";
-
-type dataType = {
-  message: string;
-};
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ActiveTodos from "./pages/ActiveTodos";
+import ArchiveTodos from "./pages/ArchiveTodos";
+import Auth from "./pages/Auth";
+import "./assets/css/index.css";
+import { useAuth } from "./hooks/useAuth";
+import { useRoutes } from "./hooks/useRoutes";
+import { AuthContext } from "./context/authContext";
+import { MahonNavbar } from "./components/navbar/MahonNavbar";
+import MahonSidebar from "./components/sidebar/Sidebar";
 
 function App() {
-  const [data, setData] = useState<dataType>({ message: "" });
-
-  const fetchToApi = async () => {
-    const response = await fetch("api");
-    const data: dataType = await response.json();
-    setData(data);
-  };
-
-  useEffect(() => {
-    fetchToApi();
-  });
-
+  const { login, logout, token, ready, userName } = useAuth();
+  const isAuthenticated = !!token;
+  const routes = useRoutes(isAuthenticated);
+  useEffect(() => {});
   return (
-    <div className="row">
-      <div className="col">
-        <p>{data ? data.message : "Loading..."}</p>
-      </div>
-      <div className="col">
-        <p>{data ? data.message : "Loading..."}</p>
-      </div>
-    </div>
+    <AuthContext.Provider
+      value={{ login, logout, token, isAuthenticated, userName }}
+    >
+      <BrowserRouter>
+        {isAuthenticated && (
+          <div style={{ marginLeft: "280px" }}>
+            <MahonNavbar />
+          </div>
+        )}
+        <Routes>{routes}</Routes>
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 
