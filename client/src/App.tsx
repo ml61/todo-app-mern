@@ -8,7 +8,6 @@ import { useAuth } from "./hooks/useAuth";
 import { useRoutes } from "./hooks/useRoutes";
 import { AuthContext } from "./context/authContext";
 import { MahonNavbar } from "./components/navbar/MahonNavbar";
-import MahonSidebar from "./components/sidebar/Sidebar";
 
 function App() {
   const { login, logout, token, ready, userName } = useAuth();

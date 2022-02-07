@@ -1,8 +1,8 @@
 import React from "react";
-import MahonSidebar from "../components/sidebar/Sidebar";
+import TodoSidebar from "../components/sidebar/TodoSidebar";
 
 const ActiveTodos = () => {
-  return <MahonSidebar />;
+  return <TodoSidebar />;
 };
 
 export default ActiveTodos;
