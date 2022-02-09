@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import { FormGroup, Input, Label } from "reactstrap";
+import { Button, FormGroup, Input, Label } from "reactstrap";
 import TodoAppLogo from "../../assets/logos/todo-app-logo.svg";
 
 const TodoSidebar = () => {
@@ -20,43 +20,67 @@ const TodoSidebar = () => {
       <hr />
       <div className="d-flex flex-column">
         <h6>Categories</h6>
-        <Label className="d-flex justify-content-between user-select-none">
-          <span>
-            <Input type="checkbox" className="me-2" />
-            <span className="me-2">Category 1</span>{" "}
-          </span>
+        <Button border className="mb-2 card-background-custom text-color-black">
+          Add Category
+        </Button>
+        <div className="d-flex justify-content-between">
+          <Label className="d-flex justify-content-between user-select-none">
+            <span>
+              <Input type="checkbox" className="me-2" />
+              <span className="me-2">Category 1</span>{" "}
+            </span>
+          </Label>
           <FontAwesomeIcon role="button" icon={Icons.faPencilAlt} />
-        </Label>
-        <Label className="d-flex justify-content-between user-select-none">
-          <span>
-            <Input type="checkbox" className="me-2" />
-            <span className="me-2">Category 2</span>
-          </span>
+        </div>
+        <div className="d-flex justify-content-between">
+          <Label className="d-flex justify-content-between user-select-none">
+            <span>
+              <Input type="checkbox" className="me-2" />
+              <span className="me-2">Category 1</span>{" "}
+            </span>
+          </Label>
           <FontAwesomeIcon role="button" icon={Icons.faPencilAlt} />
-        </Label>
-        <Label className="d-flex justify-content-between user-select-none">
-          <span>
-            <Input type="checkbox" className="me-2" />
-            <span className="me-2">Category 3</span>
-          </span>
+        </div>
+        <div className="d-flex justify-content-between">
+          <Label className="d-flex justify-content-between user-select-none">
+            <span>
+              <Input type="checkbox" className="me-2" />
+              <span className="me-2">Category 1</span>{" "}
+            </span>
+          </Label>
           <FontAwesomeIcon role="button" icon={Icons.faPencilAlt} />
-        </Label>
+        </div>
       </div>
       <hr />
       <div className="d-flex flex-column">
         <h6>Urgency</h6>
         <Label className="mb-0 user-select-none">
-          <Input type="checkbox" className="me-1" />
+          <Input
+            onChange={(e) => {
+              console.log(e.target.checked);
+            }}
+            type="checkbox"
+            className="me-2"
+          />
           Urgent
         </Label>
         <Label className="mb-0 user-select-none">
-          <Input type="checkbox" className="me-1" />
+          <Input type="checkbox" className="me-2" />
           Medium
         </Label>
         <Label className="mb-0 user-select-none">
-          <Input type="checkbox" className="me-1" />
+          <Input type="checkbox" className="me-2" />
           Low
         </Label>
+      </div>
+      <hr />
+      <div className="d-flex flex-column user-select-none">
+        <h6>Sort</h6>
+        <span className="mb-1 cursor-pointer">Fieldddd 1</span>
+        <span className="mb-1 cursor-pointer">Fieldddd 1</span>
+        <span className="mb-1 cursor-pointer">Fieldddd 1</span>
+        <span className="mb-1 cursor-pointer">Fieldddd 1</span>
+        <span className="mb-1 cursor-pointer">Fieldddd 1</span>
       </div>
     </aside>
   );
