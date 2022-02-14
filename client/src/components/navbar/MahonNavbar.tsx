@@ -13,9 +13,7 @@ import {
   NavItem,
   UncontrolledDropdown,
 } from "reactstrap";
-import TodoAppLogo from "../../assets/logos/todo-app-logo.svg";
 import { AuthContext } from "../../context/authContext";
-import { getDataFromStorage } from "../../hooks/useAuth";
 
 const MahonNavbar = () => {
   const { userName, logout } = useContext(AuthContext);
@@ -28,7 +26,7 @@ const MahonNavbar = () => {
         <Nav className="ms-auto" navbar>
           <UncontrolledDropdown inNavbar nav>
             <DropdownToggle caret nav>
-              <b>{userName || getDataFromStorage()?.userName}</b>
+              <b>{userName}</b>
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem onClick={logout}>Logout</DropdownItem>

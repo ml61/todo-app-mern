@@ -35,8 +35,8 @@ const Auth = () => {
             setIsRegisterMode(false);
             setForm(initialFormState);
           },
-          ({ errorsArr }) => {
-            showToast(MahonToastEnum.DANGER, formatErrors(errorsArr));
+          (err) => {
+            showToast(MahonToastEnum.DANGER, formatErrors(err));
           }
         )
       : request(
@@ -48,8 +48,8 @@ const Auth = () => {
           ({ token, userId, userName }) => {
             login(token, userId, userName);
           },
-          ({ errorsArr }) => {
-            showToast(MahonToastEnum.DANGER, formatErrors(errorsArr));
+          (err) => {
+            showToast(MahonToastEnum.DANGER, formatErrors(err));
           }
         );
   };

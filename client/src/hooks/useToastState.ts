@@ -1,6 +1,11 @@
 import { useCallback, useState } from "react";
 import { MahonToastEnum } from "../utils/enums/mahonToastEnum";
 
+export type showToastType = (
+  toastType: MahonToastEnum,
+  toastBodyContent: string
+) => void;
+
 export const useToastState = () => {
   const [isToastShown, setIsToastShown] = useState(false);
   const [toastType, setToastType] = useState<MahonToastEnum>(
@@ -8,8 +13,8 @@ export const useToastState = () => {
   );
   const [toastBodyContent, setToastBodyContent] = useState("");
 
-  const showToast = useCallback(
-    (toastType: MahonToastEnum, toastBodyContent) => {
+  const showToast: showToastType = useCallback(
+    (toastType, toastBodyContent) => {
       setToastBodyContent(toastBodyContent);
       setToastType(toastType);
       setIsToastShown(true);

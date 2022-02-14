@@ -7,7 +7,7 @@ export const getDataFromStorage = (storageName = "todoAppMernUserData") =>
 export const useAuth = () => {
   const dataFromStorage = getDataFromStorage(storageName);
   const [token, setToken] = useState(dataFromStorage?.token);
-  const [userName, setUserName] = useState(dataFromStorage?.userName || "");
+  const [userName, setUserName] = useState(dataFromStorage?.userName);
   const [ready, setReady] = useState(false);
   const login = useCallback((jwtToken, id, userName) => {
     setToken(jwtToken);
@@ -25,8 +25,9 @@ export const useAuth = () => {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem(storageName));
-    if (data && data.token) {
-      login(data.token);
+    const { token, id, userName } = data ?? {};
+    if (token && id && userName) {
+      login(token, id, userName);
     }
     setReady(true);
   }, [login]);

@@ -1,6 +1,6 @@
 export enum ApiPathEnum {
-  CATEGORY = "api/category",
-  TODO = "api/todo",
+  CATEGORIES = "api/categories",
+  TODOS = "api/todos",
   REGISTER = "api/auth/register",
   LOGIN = "api/auth/login",
 }
