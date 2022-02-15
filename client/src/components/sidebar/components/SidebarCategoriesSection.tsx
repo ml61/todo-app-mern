@@ -1,6 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Input, Label } from "reactstrap";
+import {
+  Button,
+  Input,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+} from "reactstrap";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import { errorType, useApi } from "../../../hooks/useApi";
 import { ICategory } from "../../../interfaces/ICategory";
@@ -12,9 +19,13 @@ import { useToastState } from "../../../hooks/useToastState";
 import { MahonToast } from "../../reusableComponents/Toast/MahonToast";
 import { MahonToastEnum } from "../../../utils/enums/mahonToastEnum";
 import SingleCategory from "./SingleCategory";
+import MahonModal from "../../reusableComponents/Modal/MahonModal";
+import { CreateEditCategoriessForm } from "./CreateEditCategoriessForm";
+import CategoriesModal from "./CategoriesModal";
 
 const SidebarCategoriesSection = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { request, isLoading } = useApi();
   const { isToastShown, toastType, showToast, closeToast, toastBodyContent } =
     useToastState();
@@ -36,6 +47,10 @@ const SidebarCategoriesSection = () => {
 
   return (
     <>
+      <CategoriesModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
       <MahonToast
         isToastShown={isToastShown}
         toastBodyContent={toastBodyContent}
@@ -44,7 +59,11 @@ const SidebarCategoriesSection = () => {
       />
       <div className="d-flex flex-column">
         <h6>Categories</h6>
-        <Button border className="mb-2 card-background-custom text-color-black">
+        <Button
+          onClick={() => setIsModalOpen(true)}
+          border
+          className="mb-2 card-background-custom text-color-black"
+        >
           Add Category
         </Button>
         {categories.map((category) => (
