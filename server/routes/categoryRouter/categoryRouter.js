@@ -39,8 +39,12 @@ categoryRouter.post(
 
       const newCategory = new Category({
         categoryName,
-        urgentHrsLessThan,
-        mediumHrsLessThan,
+        urgentHrsLessThan: urgentHrsLessThan
+          ? +urgentHrsLessThan
+          : urgentHrsLessThan,
+        mediumHrsLessThan: mediumHrsLessThan
+          ? +mediumHrsLessThan
+          : mediumHrsLessThan,
         owner: userId,
       });
 

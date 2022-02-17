@@ -1,14 +1,10 @@
 const validateHrs = (res, urgentHrsLessThan, mediumHrsLessThan) => {
-  if (urgentHrsLessThan && typeof urgentHrsLessThan !== "number") {
+  if (!urgentHrsLessThan || !mediumHrsLessThan) return;
+
+  if (urgentHrsLessThan >= mediumHrsLessThan)
     res.status(400).json({
-      errorsArr: "Urgent hours should be number",
+      errorsArr: ["Urgent hours should be less than medium hours"],
     });
-  }
-  if (mediumHrsLessThan && typeof mediumHrsLessThan !== "number") {
-    res.status(400).json({
-      errorsArr: "Medium hours should be number",
-    });
-  }
 };
 
 module.exports = { validateHrs };

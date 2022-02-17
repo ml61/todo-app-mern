@@ -8,9 +8,7 @@ const SidebarUrgencySection = () => {
       <Label role="button" className="mb-0 user-select-none">
         <Input
           role="button"
-          onChange={(e) => {
-            console.log(e.target.checked);
-          }}
+          onChange={(e) => {}}
           type="checkbox"
           className="me-2"
         />

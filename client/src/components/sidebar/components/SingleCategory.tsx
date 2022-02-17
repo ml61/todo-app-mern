@@ -17,6 +17,7 @@ interface ISingleCategoryProps {
   showToast: showToastType;
   categories: ICategory[];
   setCategories: (categories: ICategory[]) => void;
+  setCategoryToEditId: (state: string) => void;
 }
 
 const SingleCategory = ({
@@ -24,6 +25,7 @@ const SingleCategory = ({
   showToast,
   setCategories,
   categories,
+  setCategoryToEditId,
 }: ISingleCategoryProps) => {
   const {
     _id: categoryId,
@@ -56,7 +58,7 @@ const SingleCategory = ({
   };
 
   return (
-    <div key={category._id} className="d-flex justify-content-between">
+    <div className="d-flex justify-content-between">
       <Label role="button" className="d-flex user-select-none flex-grow-1">
         <span>
           <Input role="button" type="checkbox" className="me-2" />
@@ -67,7 +69,9 @@ const SingleCategory = ({
         isLoading={isLoading}
         icon={Icons.faPencilAlt}
         className="me-2"
-        onClick={() => {}}
+        onClick={() => {
+          setCategoryToEditId(categoryId);
+        }}
       />
       <MahonIcon
         isLoading={isLoading}

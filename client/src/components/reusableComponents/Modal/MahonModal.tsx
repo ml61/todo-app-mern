@@ -9,6 +9,14 @@ import {
   ModalHeader,
 } from "reactstrap";
 import { IMahonModal } from "../../../interfaces/components/IMahonModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+
+export enum ModalTypesEnum {
+  CREATE = "create",
+  EDIT = "edit",
+  CONFIRM = "confirm",
+}
 
 const MahonModal = ({
   isModalOpen,
@@ -18,6 +26,9 @@ const MahonModal = ({
   values,
   title,
   renderBody,
+  isLoading,
+  errorMessage,
+  onCloseModal,
   ...props
 }: IMahonModal) => {
   const helperFunc = (a: {}) =>
@@ -47,11 +58,33 @@ const MahonModal = ({
       >
         <ModalHeader>{title}</ModalHeader>
         <ModalBody>{renderBody()}</ModalBody>
-        <ModalFooter>
-          <Button color="danger" onClick={() => setIsModalOpen(false)}>
+        <ModalFooter className="d-flex">
+          <span className="flex-grow-1">
+            {errorMessage && (
+              <span className="d-flex align-items-center">
+                <FontAwesomeIcon
+                  color="red"
+                  className="me-2"
+                  icon={faExclamationTriangle}
+                />
+                <span className="text-danger">{errorMessage}</span>
+              </span>
+            )}
+          </span>
+          <Button
+            color="danger"
+            onClick={() => {
+              setIsModalOpen(false);
+              if (onCloseModal) onCloseModal();
+            }}
+          >
             Cancel
           </Button>
-          <Button disabled={isNothingChanged()} color="primary" type="submit">
+          <Button
+            disabled={isNothingChanged() || isLoading}
+            color="primary"
+            type="submit"
+          >
             Submit
           </Button>
         </ModalFooter>

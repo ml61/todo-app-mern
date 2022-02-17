@@ -28,7 +28,7 @@ const MahonNavbar = () => {
             <DropdownToggle caret nav>
               <b>{userName}</b>
             </DropdownToggle>
-            <DropdownMenu right>
+            <DropdownMenu end>
               <DropdownItem onClick={logout}>Logout</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>

@@ -9,4 +9,7 @@ export interface IMahonModal extends ModalProps {
   values?: {};
   title: string;
   renderBody: () => ReactNode;
+  isLoading?: boolean;
+  errorMessage?: string;
+  onCloseModal?: () => void;
 }
