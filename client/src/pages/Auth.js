@@ -71,6 +71,7 @@ const Auth = () => {
         <Container>
           <MahonCard
             onSubmitHandler={onSubmitForm}
+            isNotCollapsable
             renderHeader={() => (
               <div className="d-flex justify-content-center align-items-center">
                 <h5>{isRegisterMode ? "Signing Up" : "Signing In"} </h5>

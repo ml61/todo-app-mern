@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ActiveTodos from "./pages/ActiveTodos";
-import ArchiveTodos from "./pages/ArchiveTodos";
-import Auth from "./pages/Auth";
 import "./assets/css/index.css";
 import { useAuth } from "./hooks/useAuth";
 import { useRoutes } from "./hooks/useRoutes";

@@ -18,8 +18,15 @@ const initialCategoryValues: ICategoryForm = {
   mediumHrsLessThan: undefined,
 };
 
-const SidebarCategoriesSection = () => {
-  const [categories, setCategories] = useState<ICategory[]>([]);
+export interface ISidebarCategoriesSectionProps {
+  categories: ICategory[];
+  setCategories: (state: ICategory[]) => void;
+}
+
+const SidebarCategoriesSection = ({
+  categories,
+  setCategories,
+}: ISidebarCategoriesSectionProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categoryToEditId, setCategoryToEditId] = useState("");
   const { request, isLoading, errorMessage } = useApi();

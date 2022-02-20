@@ -5,4 +5,6 @@ export interface IMahonCard {
   renderBody?: () => ReactNode;
   renderFooter?: () => ReactNode;
   onSubmitHandler?: () => void;
+  isNotCollapsable?: boolean;
+  className?: string;
 }

@@ -12,6 +12,15 @@ const SidebarUrgencySection = () => {
           type="checkbox"
           className="me-2"
         />
+        Overdue
+      </Label>
+      <Label role="button" className="mb-0 user-select-none">
+        <Input
+          role="button"
+          onChange={(e) => {}}
+          type="checkbox"
+          className="me-2"
+        />
         Urgent
       </Label>
       <Label role="button" className="mb-0 user-select-none">
